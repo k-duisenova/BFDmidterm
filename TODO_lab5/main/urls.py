@@ -1,9 +1,9 @@
 from django.urls import path
-
-from main.views import TodoListAPIView, TodoListIdAPIView, TodoAPIView
+from main.views import TodoListViewSet, TodoViewSet, CompletedTodoViewSet
 
 urlpatterns = [
-    path('todos', TodoListAPIView.as_view()),
-    path('todos/<int:pk>', TodoListIdAPIView.as_view()),
-    path('todos/<int:id>/completed', TodoAPIView.as_view()),
+    path('todos', TodoViewSet.as_view({'get': 'list'})),
+    path('todos/<int:pk>', TodoListViewSet.as_view({'get': 'retrieve'})),
+    path('todos/<int:pk>/completed', CompletedTodoViewSet.as_view({'get': 'retrieve'})),
 ]
+
